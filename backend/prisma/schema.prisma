@@ -57,3 +57,18 @@ model Sermon {
 
   @@map("sermons")
 }
+
+// Staff/Team model for displaying pastors and leaders
+model Staff {
+  id        String   @id @default(uuid())
+  name      String
+  role      String   // e.g. "Senior Pastor", "Youth Leader"
+  bio       String?  @db.Text
+  email     String?
+  photoUrl  String?
+  order     Int      @default(0) // Control display order (low numbers first)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("staff")
+}
