@@ -2,9 +2,9 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# NNMKC Church Website Backend
+# NNMKC Website Backend
 
-Backend API for the NNMKC Church website, built with **NestJS**, **PostgreSQL**, and **Prisma**.
+Backend API for the North Nazareth Meserete Kristos Church (NNMKC) website, built with **NestJS**, **PostgreSQL**, and **Prisma**.
 
 ## 🛠️ Tech Stack
 

@@ -7,9 +7,9 @@ async function bootstrap() {
 
   // Swagger setup
   const config = new DocumentBuilder()
-    .setTitle('North Nazareth Meserete Kristos Church API')
+    .setTitle('NNMKC API')
     .setDescription(
-      'API documentation for the North Nazareth Meserete Kristos Church website backend',
+      'API documentation for the North Nazareth Meserete Kristos Church (NNMKC) website backend',
     )
     .setVersion('1.0')
     .addBearerAuth() // Adds Bearer token support for JWT
