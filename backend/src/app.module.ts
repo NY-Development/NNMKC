@@ -9,6 +9,7 @@ import { PagesModule } from './pages/pages.module';
 import { SermonsModule } from './sermons/sermons.module';
 import { StaffModule } from './staff/staff.module';
 import { MinistriesModule } from './ministries/ministries.module';
+import { ArticlesModule } from './articles/articles.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { MinistriesModule } from './ministries/ministries.module';
     SermonsModule,
     StaffModule,
     MinistriesModule,
+    ArticlesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

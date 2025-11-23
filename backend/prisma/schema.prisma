@@ -98,3 +98,32 @@ model Ministry {
 
   @@map("ministries")
 }
+
+// Articles/Blog model for news, devotionals, and updates
+model Article {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String?  // Short summary for lists
+  imageUrl    String?  // Featured image
+  
+  author      String?  // e.g. "Rev. Abraham" or default to Admin
+  category    String   // e.g. "News", "Devotional", "Event"
+  tags        String[] // Array of strings e.g. ["faith", "prayer"]
+  
+  isPublished Boolean  @default(false)
+  isFeatured  Boolean  @default(false) // For homepage slider
+  
+  views       Int      @default(0)
+  
+  publishedAt DateTime? // Can be future-dated for scheduling
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // SEO fields
+  metaTitle   String?
+  metaDesc    String?
+
+  @@map("articles")
+}
