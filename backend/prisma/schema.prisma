@@ -72,3 +72,29 @@ model Staff {
 
   @@map("staff")
 }
+
+// Ministries model for church groups (Youth, Kids, Worship, etc.)
+model Ministry {
+  id          String   @id @default(uuid())
+  name        String   // e.g. "Youth Ministry"
+  slug        String   @unique // e.g. "youth"
+  description String?  @db.Text
+  
+  // Strategic Details
+  mission     String?  @db.Text
+  vision      String?  @db.Text // "Objective" usually fits here
+  values      String?  @db.Text
+
+  // Logistics
+  meetingTime String?  // e.g. "Fridays at 6:00 PM"
+  location    String?  // e.g. "Main Hall"
+  leaderName  String?  // e.g. "Brother John"
+  contactInfo String?  // e.g. "youth@nnmkc.org"
+  
+  imageUrl    String?  // Banner or logo for the ministry
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("ministries")
+}
