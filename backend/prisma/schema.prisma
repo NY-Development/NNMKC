@@ -41,3 +41,19 @@ model Page {
 
   @@map("pages")
 }
+
+// Sermons model for managing church sermons and media
+model Sermon {
+  id           String   @id @default(uuid())
+  title        String
+  preacher     String
+  videoUrl     String
+  thumbnailUrl String?
+  description  String?  @db.Text
+  datePreached DateTime
+  series       String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("sermons")
+}
