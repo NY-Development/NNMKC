@@ -127,3 +127,24 @@ model Article {
 
   @@map("articles")
 }
+
+// Events model for church calendar and special occasions
+model Event {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  description String?  @db.Text
+  
+  startDate   DateTime
+  endDate     DateTime? // Optional end time
+  
+  location    String?  // e.g. "Main Sanctuary" or "Zoom"
+  imageUrl    String?  // Event flyer
+  
+  isFeatured  Boolean  @default(false) // Pin to homepage
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("events")
+}
