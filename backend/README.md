@@ -1,99 +1,110 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
-
 # NNMKC Website Backend
 
 Backend API for the North Nazareth Meserete Kristos Church (NNMKC) website, built with **NestJS**, **PostgreSQL**, and **Prisma**.
 
 ## 🛠️ Tech Stack
 
-- **Framework:** [NestJS](https://nestjs.com/) (Node.js)
-- **Database:** [PostgreSQL](https://www.postgresql.org/)
-- **ORM:** [Prisma](https://www.prisma.io/)
-- **Authentication:** JWT (Passport)
-- **Payments:** Chapa Integration
-- **Documentation:** Swagger / OpenAPI
-- **Containerization:** Docker & Docker Compose
+*   **Framework:** NestJS (Node.js)
+*   **Database:** PostgreSQL
+*   **ORM:** Prisma
+*   **Authentication:** JWT (Passport)
+*   **Payments:** Chapa Integration (Planned)
+*   **Documentation:** Swagger / OpenAPI
+*   **Containerization:** Docker & Docker Compose
 
----
-
-## 📂 Project Structure
-
-```
-src/
-├── auth/           # Authentication & Authorization (Admin login)
-├── users/          # Admin user management
-├── pages/          # CMS for managing dynamic pages
-├── articles/       # Blog/Articles management
-├── announcements/  # Church announcements
-├── donations/      # Donation records & business logic
-├── payments/       # Chapa payment gateway integration
-├── prisma/         # Database connection service
-└── common/         # Shared guards, filters, decorators
-```
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18+)
-- Docker & Docker Compose
-- PostgreSQL (if not using Docker)
-
-### 1. Installation
+## Project Structure
 
 ```bash
-$ npm install
+NNMKC/backend/
+├── src/
+│   ├── app.module.ts       # Main application module
+│   ├── main.ts             # Entry point
+│   ├── auth/               # Authentication (JWT, Guards)
+│   ├── users/              # Admin user management
+│   ├── prisma/             # Database connection service
+│   ├── pages/              # Static pages (About Us, etc.)
+│   ├── sermons/            # Sermons & Videos
+│   ├── staff/              # Leadership team profiles
+│   ├── ministries/         # Church ministries (Youth, etc.)
+│   ├── articles/           # Blog & News
+│   ├── events/             # Calendar & Events
+│   ├── announcements/      # Urgent alerts
+│   ├── dashboard/          # Stats & Recent Activity
+│   ├── payments/           # Chapa Integration (Gateway Logic)
+│   ├── donations/          # Donation Records & Business Logic
+│   ├── media/              # Media library & Uploads
+│   └── common/             # Shared guards, decorators, etc.
+├── prisma/
+│   ├── schema.prisma       # Database schema definition
+│   ├── seed.ts             # Initial data seeder (Admin user)
+│   └── migrations/         # SQL migration history
+├── docker-compose.yml      # Docker configuration for PostgreSQL
+├── .env                    # Environment variables (Git-ignored)
+└── package.json            # Dependencies
 ```
 
-### 2. Environment Setup
+## Setup Instructions
 
-Copy the example environment file and update it with your credentials:
+### 1. Prerequisites
 
-```bash
-$ cp .env.example .env
-```
+*   **Node.js** (v18+)
+*   **Docker Desktop** (for the database)
+*   **Git**
 
-**Note:** Never commit `.env` to version control.
+### 2. Environment Configuration
+
+1.  Create a `.env` file in the `backend` folder.
+2.  Follow the example in `.env.example` to fill in your secrets (ask the team lead for keys).
 
 ### 3. Database Setup (Docker)
 
-Start the PostgreSQL database using Docker:
+We use Docker to run PostgreSQL easily without installing it on your machine.
+
+1.  Open **Docker Desktop** and ensure it's running.
+2.  In the terminal, navigate to `NNMKC/backend`:
+    ```bash
+    cd NNMKC/backend
+    ```
+3.  Start the database container:
+    ```bash
+    docker-compose up -d
+    ```
+    *   *Note:* If you get port conflicts, ensure nothing is running on port 5433, or change `DB_PORT` in `.env` and `docker-compose.yml`.
+
+### 4. Database Schema & Migration
+
+Apply the schema to the database:
 
 ```bash
-$ docker-compose up -d
+# Install dependencies
+npm install
+
+# Run migrations
+npx prisma migrate dev
 ```
 
-Apply database migrations:
+### 5. Seeding Initial Data
+
+Create the first Super Admin user:
 
 ```bash
-$ npx prisma migrate dev
+npx prisma db seed
 ```
 
-### 4. Running the App
+### 6. Running the API
 
 ```bash
-# development (watch mode)
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# Development mode (auto-reload)
+npm run start:dev
 ```
 
-The API will be available at `http://localhost:3000`.
-
----
+The API will be available at: `http://localhost:3000`
 
 ## 📚 API Documentation
 
 Once the server is running, visit the Swagger UI documentation:
 
-👉 **[http://localhost:3000/api/docs](http://localhost:3000/api/docs)**
-
----
+👉 `http://localhost:3000/api`
 
 ## 🧪 Testing
 
@@ -108,8 +119,6 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
----
-
 ## 📦 Database Management
 
 You can view and manage the database content using **Prisma Studio**:
@@ -117,16 +126,21 @@ You can view and manage the database content using **Prisma Studio**:
 ```bash
 $ npx prisma studio
 ```
-Access it at `http://localhost:5555`.
 
----
+Access it at `http://localhost:5555`.
 
 ## 🔐 Security Notes
 
-- **Authentication:** Admin access is protected via JWT.
-- **Payments:** Webhooks are verified using Chapa signatures.
-- **Environment:** Secrets are managed via `.env`.
+*   **Authentication:** Admin access is protected via JWT.
+*   **Payments:** Webhooks are verified using Chapa signatures (Future).
+*   **Environment:** Secrets are managed via `.env`.
+
+## Troubleshooting
+
+*   **Prisma Client Error:** If you see "PrismaClient... error", try running `npx prisma generate`.
+*   **Database Connection Refused:** Check if Docker container is running (`docker ps`).
+*   **Port 3000 in use:** Stop other Node processes or change `PORT` in `.env`.
 
 ## 📄 License
 
-This project is [UNLICENSED](LICENSE).
+This project is licensed under **NNMKC Ministry Use License** (custom, to be defined). Not intended for commercial redistribution.
