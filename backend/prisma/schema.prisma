@@ -148,3 +148,28 @@ model Event {
 
   @@map("events")
 }
+
+// Announcement model for urgent notices and alerts
+model Announcement {
+  id          String   @id @default(uuid())
+  title       String
+  content     String?  @db.Text
+  
+  priority    AnnouncementPriority @default(MEDIUM)
+  
+  startDate   DateTime? // When to start showing it
+  endDate     DateTime? // When to stop showing it (Auto-expiration)
+  
+  isActive    Boolean  @default(true) // Manual toggle
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("announcements")
+}
+
+enum AnnouncementPriority {
+  LOW
+  MEDIUM
+  HIGH
+}

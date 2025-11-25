@@ -11,6 +11,7 @@ import { StaffModule } from './staff/staff.module';
 import { MinistriesModule } from './ministries/ministries.module';
 import { ArticlesModule } from './articles/articles.module';
 import { EventsModule } from './events/events.module';
+import { AnnouncementsModule } from './announcements/announcements.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { EventsModule } from './events/events.module';
     MinistriesModule,
     ArticlesModule,
     EventsModule,
+    AnnouncementsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
