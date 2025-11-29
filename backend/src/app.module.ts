@@ -12,6 +12,7 @@ import { MinistriesModule } from './ministries/ministries.module';
 import { ArticlesModule } from './articles/articles.module';
 import { EventsModule } from './events/events.module';
 import { AnnouncementsModule } from './announcements/announcements.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { AnnouncementsModule } from './announcements/announcements.module';
     ArticlesModule,
     EventsModule,
     AnnouncementsModule,
+    DashboardModule,
   ],
   controllers: [AppController],
   providers: [AppService],

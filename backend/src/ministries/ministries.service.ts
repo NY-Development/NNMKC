@@ -7,12 +7,6 @@ import { CreateMinistryDto } from './dto/create-ministry.dto';
 import { UpdateMinistryDto } from './dto/update-ministry.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { Ministry } from '@prisma/client';
-
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 @Injectable()
 export class MinistriesService {
   constructor(private readonly prisma: PrismaService) {}

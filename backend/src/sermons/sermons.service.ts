@@ -4,11 +4,6 @@ import { UpdateSermonDto } from './dto/update-sermon.dto';
 import { PrismaService } from '../prisma/prisma.service';
 import { Sermon } from '@prisma/client';
 
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-
 @Injectable()
 export class SermonsService {
   constructor(private readonly prisma: PrismaService) {}
