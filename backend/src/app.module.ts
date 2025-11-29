@@ -13,6 +13,7 @@ import { ArticlesModule } from './articles/articles.module';
 import { EventsModule } from './events/events.module';
 import { AnnouncementsModule } from './announcements/announcements.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { MediaModule } from './media/media.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     EventsModule,
     AnnouncementsModule,
     DashboardModule,
+    MediaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
