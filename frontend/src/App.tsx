@@ -1,17 +1,22 @@
-import { ChakraProvider, Container, Heading, Text } from '@chakra-ui/react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ChakraProvider, Container, Heading } from '@chakra-ui/react';
+import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
+import Nav from './components/Nav'; // Import your Nav component
 
 function App() {
   return (
     <HelmetProvider>
       <ChakraProvider>
-        <Router>
-          <Container py={10}>
-            <Heading as="h1" mb={4}>NNMKC Website</Heading>
-            <Text>Welcome. Content and routes will go here.</Text>
+
+        <Container maxW="container.xl" p={0}>
+
+          <Nav />
+          <Container py={20} maxW="container.lg">
+            <Outlet />
           </Container>
-        </Router>
+
+        </Container>
+
       </ChakraProvider>
     </HelmetProvider>
   );
