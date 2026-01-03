@@ -11,6 +11,7 @@ import Contact from '../pages/Contact'
 import Giving from '../pages/Giving'
 import Error from '../pages/Error'
 import Login from '../pages/Login'
+import SignUp from '../pages/Signup'
 
 const routes = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const routes = createBrowserRouter([
         element: <Home />
       },
       {
-        path: 'about',
+        path: 'about-us',
         element: <About />
       },
       {
@@ -53,6 +54,10 @@ const routes = createBrowserRouter([
       {
         path: 'login',
         element: <Login />
+      },
+      {
+        path: 'signup',
+        element: <SignUp />
       },
     ]
   },
