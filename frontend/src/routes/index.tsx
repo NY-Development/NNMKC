@@ -10,6 +10,7 @@ import Sermons from '../pages/Sermons'
 import Contact from '../pages/Contact'
 import Giving from '../pages/Giving'
 import Error from '../pages/Error'
+import Login from '../pages/Login'
 
 const routes = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
       {
         path: 'contact',
         element: <Contact />
+      },
+      {
+        path: 'login',
+        element: <Login />
       },
     ]
   },

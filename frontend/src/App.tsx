@@ -1,22 +1,19 @@
-import { ChakraProvider, Container, Heading } from '@chakra-ui/react';
+import { Box, ChakraProvider, Container, Heading } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import Nav from './components/Nav'; // Import your Nav component
+import Nav from './components/Nav';
 
 function App() {
   return (
     <HelmetProvider>
       <ChakraProvider>
-
-        <Container maxW="container.xl" p={0}>
-
+        <Box minH="100vh">
           <Nav />
-          <Container py={20} maxW="container.lg">
+          
+          <Box pt="60px">
             <Outlet />
-          </Container>
-
-        </Container>
-
+          </Box>
+        </Box>
       </ChakraProvider>
     </HelmetProvider>
   );

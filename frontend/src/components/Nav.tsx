@@ -1,53 +1,46 @@
-import { Box, Text, VStack } from "@chakra-ui/react"
-import { Link, NavLink } from "react-router-dom"
+import { Box, Flex, Button, Text, HStack, Link, Container } from "@chakra-ui/react";
 
-function Nav() {
+const Nav = () => {
   const navLinks = [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About Us' },
-    { to: '/ministries', label: 'Ministries' },
-    { to: '/events', label: 'Events' },
-    { to: '/sermons', label: 'Sermons' },
-    { to: '/prayer-request', label: 'Prayer Request' },
-    { to: '/giving', label: 'Giving' },
-    { to: '/contact', label: 'Contact' },
-  ]
+    { name: "Features", id: 'reatures', href: "#features" },
+    { name: "Pricing", id: 'pricing', href: "#" },
+    { name: "About", id: 'about', href: "#" },
+  ];
 
   return (
-    <Box 
-        as="nav" 
-        p={3} 
-        display="flex" 
-        flexDirection="row" 
-        alignItems="center" 
-        justifyContent="space-between"
-        bgColor="gray.800" 
-        color="white"
-        position="fixed"
-        top={'0'}
-        left={'0'}
-        right={'0'}
-        zIndex={10}
-        width={'100%'}
-      >
-        <Link to="/">
-          <Text fontSize="xl" fontWeight="bold">NNMKC</Text>
-        </Link>
-        {navLinks.map((link) => (
-            <Box 
-            key={link.to}
-            >
-            <NavLink 
-                to={link.to}
-            >
-                {link.label}
-                <Box mx={'auto'} className="active-nav" rounded={'2xl'} height={'1'} width={'5'} bgColor={'gray.400'}></Box>
-            </NavLink>
-            </Box>
-        ))}
+    <Box bg="white" px={4} borderBottom="1px" borderColor="gray.100" position="sticky" top={0} zIndex={10}>
+      <Container maxW="container.xl">
+        <Flex h={16} alignItems="center" justifyContent="space-between">
+          {/* Logo */}
+          <Text fontSize="xl" fontWeight="bold" color="blue.600">
+            Brand
+          </Text>
 
+          {/* Navigation Links */}
+          <HStack spacing={8} display={{ base: "none", md: "flex" }}>
+            {navLinks.map((link) => (
+              <Link
+                id={link.id}
+                key={link.name}
+                href={link.href}
+                _hover={{ textDecoration: "none", color: "blue.500" }}
+                fontWeight="medium"
+              >
+                {link.name}
+              </Link>
+            ))}
+          </HStack>
+
+          {/* Action Button */}
+          <Flex alignItems="center">
+            <Button colorScheme="blue" size="sm" fontWeight="bold">
+              Get Started
+            </Button>
+          </Flex>
+        </Flex>
+      </Container>
     </Box>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

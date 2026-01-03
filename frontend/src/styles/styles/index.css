@@ -1,8 +1,0 @@
-
-.active-nav{
-    display: none;
-}
-
-a.active .active-nav{
-    display: block;
-}
